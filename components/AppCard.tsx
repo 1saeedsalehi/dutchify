@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 type AppCardProps = {
   app: Application;
@@ -10,10 +11,11 @@ type Application = {
   name: string;
   ios: string;
   android: string;
+  content : string;
 };
 
 export default function AppCard({
-  app: { website, logo, name, ios, android },
+  app: { website, logo, name, ios, android,content },
 }: AppCardProps) {
   return (
       <div className="w-full p-4 text-left bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
@@ -31,22 +33,9 @@ export default function AppCard({
           />
           {name}
         </a>
-        <p className="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400 text my-3">
-          {/* <svg
-                  className="w-6 h-6 dark:text-white inline"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
-                  ></path>
-                </svg> */}
-          hello from markdown ! Description goes here!
-        </p>
+        <div className="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400 text my-3">
+          {<ReactMarkdown children={content} />}
+        </div>
         <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
           <a
             href={`${ios}`}
