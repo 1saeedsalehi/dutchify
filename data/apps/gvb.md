@@ -7,5 +7,4 @@ android: https://play.google.com/store/apps/details?id=nl.gvb.reizigersapp
 website: https://www.gvb.nl/
 ---
 
-
-blah blah blah
+GVB is a Dutch public transport company and provides public transport in the municipalities of Amsterdam...

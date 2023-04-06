@@ -7,5 +7,4 @@ android: https://play.google.com/store/apps/details?id=com.bunq.android&hl=nl&gl
 website: https://nl.bunq.com/
 ---
 
-
-blah blah blah
+ bunq is a banking app which allows you to have total control over your money through your phone.

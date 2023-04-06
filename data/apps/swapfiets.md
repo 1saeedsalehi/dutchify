@@ -7,5 +7,4 @@ android: https://play.google.com/store/apps/details?id=com.swapfiets
 website: https://swapfiets.nl/
 ---
 
-
-blah blah blah
+The **#1** bike subscription application in The Netherlands. 
