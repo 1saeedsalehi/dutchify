@@ -3,7 +3,11 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { AppCardProps } from "./types/AppCardProps";
 
 export default function AppCard({
-  app: { website, logo, name, ios, android, content } }: AppCardProps) {
+  app: {
+    data: { website, logo, name, ios, android },
+    content,
+  },
+}: AppCardProps) {
   return (
     <div className="w-full p-4 text-left bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
       <a

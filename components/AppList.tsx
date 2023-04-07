@@ -2,6 +2,7 @@ import AppCard from "./AppCard";
 import { AppListProps } from "./types/AppListProps";
 
 export default function AppList({ category, items }: AppListProps) {
+ 
   return (
     <>
       <div className="mx-auto text-left my-8">
@@ -10,8 +11,9 @@ export default function AppList({ category, items }: AppListProps) {
         </h2>
       </div>
       <div className="grid gap-8 lg:grid-cols-3">
+        
         {items.map(function (item) {
-          return <AppCard app={item} key={item.name} />;
+          return <AppCard app={item} key={item.data.name} />;
         })}
       </div>
     </>

@@ -1,29 +1,25 @@
-import { getAllFilesFrontMatter } from "@/lib/mdx";
+import { getAllPostsWithFrontMatter } from "@/lib/mdx";
 import AppList from "../../components/AppList";
-import { group } from "console";
 
 export async function getStaticProps() {
-  const applications = await getAllFilesFrontMatter("apps");
+  const applications = await getAllPostsWithFrontMatter("apps");
 
-  // const groupBy = (list, propFn) => {
-  //   return list.reduce((group, item) => {
-  //     const prop = propFn(item)
-  //     group[prop] = group[prop] ?? [];
-  //     group[prop].push(item);
-  //     return group;
-  //   }, {});
-  // }
-  const grouppedApp = applications.reduce((group, app) => {
-    const { category } = app;
-    group[category] = group[category] ?? [];
-    group[category].push(app);
-    return group;
-  }, {});
+  function groupBy<T>(arr: T[], fn: (item: T) => any) {
+    return arr.reduce<Record<string, T[]>>((prev, curr) => {
+      const groupKey = fn(curr);
+      const group = prev[groupKey] || [];
+      group.push(curr);
+      return { ...prev, [groupKey]: group };
+    }, {});
+  }
+
+  const grouppedApp = groupBy(applications, (property) => property.data.category);
 
   return { props: { apps: grouppedApp } };
 }
 
-export default function App({ apps }) {
+export default function App({ apps }: any) {
+
   return (
     <div className={`relative isolate px-6 pt-14 lg:px-8 bg-cover`}>
       <section className="bg-white dark:bg-gray-900">
