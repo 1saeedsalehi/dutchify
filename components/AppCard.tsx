@@ -1,22 +1,9 @@
 import Image from "next/image";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-
-type AppCardProps = {
-  app: Application;
-};
-
-type Application = {
-  website: string;
-  logo: string;
-  name: string;
-  ios: string;
-  android: string;
-  content: string;
-};
+import { AppCardProps } from "./types/AppCardProps";
 
 export default function AppCard({
-  app: { website, logo, name, ios, android, content },
-}: AppCardProps) {
+  app: { website, logo, name, ios, android, content } }: AppCardProps) {
   return (
     <div className="w-full p-4 text-left bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
       <a
