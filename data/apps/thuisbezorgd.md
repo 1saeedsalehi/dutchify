@@ -1,6 +1,6 @@
 ---
 name: Thuisbezorgd
-logo: /logos/thuisbezorgd.png
+logo: /logos/thuisbezorgdnl.png
 category: Supermarket
 ios:  https://apps.apple.com/nl/app/thuisbezorgd-nl/id329472759?l=en
 android: https://play.google.com/store/apps/details?id=com.takeaway.android&hl=nl&gl=US
