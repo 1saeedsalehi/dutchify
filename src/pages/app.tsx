@@ -1,15 +1,18 @@
 import { getAllPostsWithFrontMatter } from "@/lib/mdx";
 import AppList from "../../components/AppList";
+import {Application} from "../../components/types/Application"
+
+type grouppedAppsProps = { [key: string]: Record<string, Application[]>}
 
 export async function getStaticProps() {
   const applications = await getAllPostsWithFrontMatter("apps");
 
   function groupBy<T>(arr: T[], fn: (item: T) => any) {
-    return arr.reduce<Record<string, T[]>>((prev, curr) => {
-      const groupKey = fn(curr);
-      const group = prev[groupKey] || [];
-      group.push(curr);
-      return { ...prev, [groupKey]: group };
+    return arr.reduce<Record<string, T[]>>((acc, current) => {
+      const groupKey = fn(current);
+      const group = acc[groupKey] || [];
+      group.push(current);
+      return { ...acc, [groupKey]: group };
     }, {});
   }
 
@@ -18,7 +21,7 @@ export async function getStaticProps() {
   return { props: { apps: grouppedApp } };
 }
 
-export default function App({ apps }: any) {
+export default function App({ apps }: grouppedAppsProps) {
 
   return (
     <div className={`relative isolate px-6 pt-14 lg:px-8 bg-cover`}>
@@ -32,8 +35,7 @@ export default function App({ apps }: any) {
             <br />
             ⚠️ please download and install it at your own risk ⚠️
           </p>
-
-          {Object.keys(apps).map(function (key) {
+          {Object.keys(apps).map(function (key : string) {
             return <AppList key={key} category={key} items={apps[key]} />;
           })}
         </div>
